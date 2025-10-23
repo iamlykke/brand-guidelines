@@ -1,6 +1,8 @@
 ---
 import Sidebar from "../components/Sidebar.astro";
 const { title = "Redo", children } = Astro.props;
+import "../styles/tokens.css";
+import "../styles/fonts.css";
 ---
 
 <html lang="en">
@@ -8,8 +10,6 @@ const { title = "Redo", children } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <link rel="stylesheet" href="/src/styles/tokens.css" />
-    <link rel="stylesheet" href="/src/styles/fonts.css" />
   </head>
   <body>
     <div class="layout">
