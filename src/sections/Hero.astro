@@ -1,0 +1,98 @@
+---
+import heroDesktop from "../assets/hero/Hero-desktop.png";
+import heroTablet from "../assets/hero/Hero-tablet.png";
+import heroMobile from "../assets/hero/Hero-mobile.png";
+import Heading from "../components/Heading.astro";
+import Text from "../components/Text.astro";
+
+/** опциональный класс для внешних отступов и т.п. */
+const { class: className = "" } = Astro.props;
+---
+
+<section class={`hero ${className}`}>
+  <picture>
+    <!-- Сначала самая "узкая" картинка -->
+    <source srcset={heroMobile.src} media="(max-width: 799px)" />
+    <source srcset={heroTablet.src} media="(max-width: 1279px)" />
+    <!-- Десктоп по умолчанию -->
+    <img
+      src={heroDesktop.src}
+      alt="Redo brand hero"
+      width="1030"
+      height="540"
+      loading="eager"
+      decoding="async"
+      sizes="(min-width:1280px) 100vw, (min-width:800px) 100vw, 100vw"
+    />
+  </picture>
+  <div class="text-content">
+    <Heading level={1}>Brand Guidelines</Heading>
+    <article>
+      <Text variant="default" color="grey">
+        This guide defines the visual language, design style, and principles
+        that shape a clear and consistent brand experience, no matter the team
+        or area of expertise.
+      </Text>
+      <Text variant="default" color="grey">
+        At its core, Redo is about precision and clarity—just like our mission
+        to correct financial errors and optimize balance sheets. This guide lays
+        out the essential design standards that bring our brand to life, from
+        our color system and typography to accessibility benchmarks and
+        documentation.
+      </Text>
+      <Text variant="default" color="grey">
+        Whether you're designing for digital platforms or printed materials,
+        these guidelines ensure every touchpoint reflects the trust and
+        efficiency at the heart of Redo.
+      </Text>
+    </article>
+  </div>
+</section>
+
+<style>
+  .hero {
+    border-bottom: 1px solid var(--divider, #e6e6e6);
+  }
+
+  .hero picture,
+  .hero img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .text-content {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    padding: 32px 32px 120px 32px;
+    justify-content: space-between;
+  }
+
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 515px;
+  }
+
+  @media (max-width: 1279px) and (min-width: 800px) {
+    article {
+      width: 388px;
+    }
+  }
+
+  /* Mobile breakpoint */
+  @media (max-width: 799px) {
+    .text-content {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding: 32px 20px 80px 20px;
+      justify-content: flex-start;
+    }
+    article {
+      width: 100%;
+    }
+  }
+</style>

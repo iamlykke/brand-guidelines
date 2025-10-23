@@ -1,0 +1,94 @@
+:root {
+  /* Цвета */
+  --bg: #ffffff;
+  --accent-1: #b3b3b3;
+  --accent-2: #f45f00;
+  --accent-3: #f20909;
+  --accent-4: #040404;
+  --accent-5: #1e3d59;
+  --accent-6: #48749e;
+  --accent-7: #deeefe;
+  --accent-8: #e8ebef;
+  --accent-9: #a3a3a3;
+  --accent-10: #b6c9cf;
+  --accent-11: #c6ebf7;
+  --accent-12: #e5e5e5;
+  --accent-13: #f1f1f1;
+  --accent-14: #f45f00;
+  --accent-15: #ffffff;
+
+  --text-black: #000000;
+  --text-grey: #575757;
+
+  --divider: #e6e6e6;
+  --stroke: #000000;
+  --link: #2c2825;
+  --link-hover: var(--accent-4);
+
+  /* Typography */
+  --font-heading: "Rethink Sans", sans-serif;
+
+  /* H1 defaults (desktop) */
+  --h1-size: 60px;
+  --h1-line-height: 110%;
+  --h1-letter-spacing: -0.01em;
+  --h1-weight: 500;
+
+  /* H2 defaults (desktop) */
+  --h2-size: 30px;
+  --h2-line-height: 120%;
+  --h2-letter-spacing: -0.02em;
+  --h2-weight: 500;
+
+  /* H3 defaults (desktop) */
+  --h3-size: 22px;
+  --h3-line-height: 120%;
+  --h3-letter-spacing: -0.01em;
+  --h3-weight: 600;
+
+  /* Text defaults (desktop) */
+  --text-size: 18px;
+  --text-line-height: 120%;
+  --text-letter-spacing: -0.01em;
+  --text-weight: 500;
+
+  /* Text Bold defaults (desktop) */
+  --text-bold-size: 15px;
+  --text-bold-line-height: 120%;
+  --text-bold-letter-spacing: -0.01em;
+  --text-bold-weight: 700;
+
+  /* Display defaults (desktop) */
+
+  --display-size: 10px;
+  --display-line-height: 120%;
+  --display-letter-spacing: -0.02em;
+  --display-weight: 500;
+
+  /* Link typography */
+  --link-size: 15px;
+  --link-line-height: 120%;
+  --link-letter-spacing: -0.02em;
+  --link-weight: 500;
+}
+
+/* Tablet breakpoint */
+@media (max-width: 1279px) and (min-width: 800px) {
+  :root {
+    --h1-size: 45px;
+    --h2-size: 26px;
+    --text-size: 16px;
+    --text-letter-spacing: 0em;
+    --link-size: 13px;
+  }
+}
+
+/* Mobile breakpoint */
+@media (max-width: 799px) {
+  :root {
+    --h1-size: 30px;
+    --h2-size: 24px;
+    --text-size: 16px;
+    --text-letter-spacing: 0em;
+  }
+}

@@ -1,0 +1,82 @@
+---
+interface TextProps {
+  variant?: "default" | "bold" | "link";
+  color?: "black" | "grey";
+  class?: string;
+  [attr: string]: any;
+}
+
+const {
+  variant = "default",
+  color = "black", // по умолчанию — чёрный
+  class: className = "",
+  ...attrs
+} = Astro.props as TextProps;
+
+const colorClass = `text--${color}`;
+---
+
+{variant === "link" ? (
+  <a class={`text text-link ${colorClass} ${className}`} {...attrs}>
+    <slot />
+  </a>
+) : (
+  <p
+    class={`text ${
+      variant === "bold" ? "text-bold" : "text-default"
+    } ${colorClass} ${className}`}
+    {...attrs}
+  >
+    <slot />
+  </p>
+)}
+
+<style>
+  .text {
+    margin: 0;
+    font-family: var(--font-heading, "Rethink Sans", sans-serif);
+  }
+
+  /* Цвета */
+  .text--black {
+    color: var(--text-black, #000000);
+  }
+
+  .text--grey {
+    color: var(--text-grey, #575757);
+  }
+
+  /* обычный */
+  .text-default {
+    font-weight: var(--text-weight, 500);
+    font-size: var(--text-size, 18px);
+    line-height: var(--text-line-height, 120%);
+    letter-spacing: var(--text-letter-spacing, -0.01em);
+  }
+
+  /* жирный */
+  .text-bold {
+    font-weight: var(--text-bold-weight, 700);
+    font-size: var(--text-bold-size, 15px);
+    line-height: var(--text-bold-line-height, 120%);
+    letter-spacing: var(--text-bold-letter-spacing, -0.01em);
+  }
+
+  /* ссылка */
+  .text-link {
+    display: inline-block;
+    font-weight: var(--link-weight, 500);
+    font-size: var(--link-size, 15px);
+    line-height: var(--link-line-height, 120%);
+    letter-spacing: var(--link-letter-spacing, -0.02em);
+    text-decoration: none;
+    transition: color 0.25s ease, text-decoration-color 0.25s ease;
+  }
+
+  .text-link:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+</style>

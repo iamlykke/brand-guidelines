@@ -1,0 +1,79 @@
+---
+interface HeadingProps {
+  level: 1 | 2 | 3;
+  color?: "black" | "grey";
+  class?: string;
+  [attr: string]: any;
+}
+
+const {
+  level = 1,
+  color = "black",
+  class: className = "",
+  ...attrs
+} = Astro.props as HeadingProps;
+
+const base = `heading heading-${level} heading--${color} ${className}`;
+---
+
+{
+  level === 1 && (
+    <h1 class={base} {...attrs}>
+      <slot />
+    </h1>
+  )
+}
+{
+  level === 2 && (
+    <h2 class={base} {...attrs}>
+      <slot />
+    </h2>
+  )
+}
+{
+  level === 3 && (
+    <h3 class={base} {...attrs}>
+      <slot />
+    </h3>
+  )
+}
+
+<style>
+  .heading {
+    font-family: var(--font-heading, "Rethink Sans", sans-serif);
+    margin: 0;
+  }
+
+  /* Цветовые варианты */
+  .heading--black {
+    color: var(--text-black, #000);
+  }
+
+  .heading--grey {
+    color: var(--text-grey, #575757);
+  }
+
+  /* H1 */
+  .heading-1 {
+    font-weight: var(--h1-weight, 500);
+    font-size: var(--h1-size, 60px);
+    line-height: var(--h1-line-height, 110%);
+    letter-spacing: var(--h1-letter-spacing, -0.01em);
+  }
+
+  /* H2 */
+  .heading-2 {
+    font-weight: var(--h2-weight, 500);
+    font-size: var(--h2-size, 30px);
+    line-height: var(--h2-line-height, 120%);
+    letter-spacing: var(--h2-letter-spacing, -0.02em);
+  }
+
+  /* H3 */
+  .heading-3 {
+    font-weight: var(--h3-weight, 600);
+    font-size: var(--h3-size, 22px);
+    line-height: var(--h3-line-height, 120%);
+    letter-spacing: var(--h3-letter-spacing, -0.01em);
+  }
+</style>

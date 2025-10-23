@@ -1,0 +1,56 @@
+---
+import Sidebar from "../components/Sidebar.astro";
+const { title = "Redo", children } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="stylesheet" href="/src/styles/tokens.css" />
+    <link rel="stylesheet" href="/src/styles/fonts.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <Sidebar />
+      <main class="main">
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    min-height: 100%;
+    margin: 0;
+    background: var(--bg);
+    /* опционально: всегда показывать правый скролл, чтобы не было «скачков» */
+    /* overflow-y: scroll; */
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    max-width: 1280px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  .main {
+    padding: 0;
+  }
+
+  @media (max-width: 1279px) and (min-width: 800px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 799px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

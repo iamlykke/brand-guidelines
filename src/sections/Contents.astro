@@ -1,0 +1,100 @@
+---
+import Heading from "../components/Heading.astro";
+
+interface Item {
+  index: string;
+  title: string;
+  href: string;
+}
+
+const {
+  items = [
+    { index: "01", title: "Brand Strategy", href: "/brand" },
+    { index: "02", title: "Personality", href: "/personality" },
+    { index: "03", title: "Logo", href: "/logo" },
+    { index: "04", title: "Color", href: "/color" },
+    { index: "05", title: "Typography", href: "/typography" },
+    { index: "06", title: "Art Direction", href: "/art-direction" },
+  ],
+  class: className = "",
+} = Astro.props as { items?: Item[]; class?: string };
+---
+
+<section class={`contents ${className}`}>
+  <Heading level={2}>Contents</Heading>
+
+  <div class="contents__right">
+    <ul class="list">
+      {
+        items.map((item) => (
+          <li>
+            <a class="contents__link" href={item.href}>
+              <Heading level={2}>
+                <span class="h2--grey">{item.index}</span>
+                <span class="h2--black">{item.title}</span>
+              </Heading>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .contents {
+    border-bottom: 1px solid var(--divider, #e6e6e6);
+    background: var(--bg, #fff);
+    padding: 32px 32px 128px 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  .contents__link {
+    display: inline-flex;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .contents__link:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--text-black, #000);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .h2--grey {
+    color: var(--text-grey, #575757);
+    font: inherit;
+  }
+
+  .h2--black {
+    color: var(--text-black, #000);
+    font: inherit;
+  }
+
+  @media (max-width: 1279px) and (min-width: 800px) {
+    .contents {
+      padding: 32px 32px 80px 32px;
+    }
+  }
+
+  @media (max-width: 799px) {
+    .contents {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      padding: 32px 20px 80px 20px;
+    }
+  }
+</style>

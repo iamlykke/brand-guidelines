@@ -1,0 +1,121 @@
+---
+import Text from "../components/Text.astro";
+import Sup from "./Sup.astro";
+---
+
+<aside class="sidebar">
+  <div class="sidebar__logo">
+    <img
+      src={"/images/logo/logo-sm.svg"}
+      alt="Redo logo"
+      width="52"
+      height="auto"
+    />
+  </div>
+
+  <nav class="sidebar__nav">
+    <ul>
+      <li>
+        <a href="/brand"
+          ><Text variant="link" color="black">Brand Strategy<Sup>01</Sup></Text>
+        </a>
+      </li>
+      <li>
+        <a href="/personality"
+          ><Text variant="link" color="black">Personality<Sup>02</Sup></Text></a
+        >
+      </li>
+      <li>
+        <a href="/logo"
+          ><Text variant="link" color="black">Logo<Sup>03</Sup></Text></a
+        >
+      </li>
+      <li>
+        <a href="/color"
+          ><Text variant="link" color="black">Color<Sup>04</Sup></Text></a
+        >
+      </li>
+      <li>
+        <a href="/typography"
+          ><Text variant="link" color="black">Typography<Sup>05</Sup></Text></a
+        >
+      </li>
+      <li>
+        <a href="/art-direction"
+          ><Text variant="link" color="black">Art Direction<Sup>06</Sup></Text
+          ></a
+        >
+      </li>
+    </ul>
+  </nav>
+
+  <div class="sidebar__footer">
+    <a href="/kit"><Text variant="link" color="grey">Download Kit</Text></a>
+    <a href="/contact"><Text variant="link" color="grey">Contact Us</Text></a>
+  </div>
+</aside>
+
+<style>
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    border-right: 1px solid var(--divider);
+    border-left: 1px solid var(--divider);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+  }
+
+  .sidebar__logo {
+    display: block;
+    max-width: 100%;
+    padding: 30px 32px;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .sidebar__nav {
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .sidebar__nav ul {
+    list-style: none;
+    padding: 24px 32px;
+    margin: 0;
+  }
+
+  .sidebar__nav li:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  .sidebar a {
+    text-decoration: none;
+    transition: text-decoration-color 0.25s ease;
+  }
+
+  .sidebar a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--text-black, #000);
+  }
+
+  .sidebar__footer {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 32px;
+    gap: 2px;
+  }
+
+  @media (max-width: 1279px) and (min-width: 800px) {
+    .sidebar {
+      display: none;
+    }
+  }
+
+  @media (max-width: 799px) {
+    .sidebar {
+      display: none;
+    }
+  }
+</style>
