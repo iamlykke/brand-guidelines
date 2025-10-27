@@ -1,0 +1,108 @@
+---
+import Heading from "../components/Heading.astro";
+import Text from "../components/Text.astro";
+
+import brandDesktop from "../assets/brandStrategy/brand-desktop.png";
+import brandTablet from "../assets/brandStrategy/brand-tablet.png";
+import brandMobile from "../assets/brandStrategy/brand-mobile.png";
+---
+
+<section class=`brand-section`>
+  <div class="left">
+    <Heading level={1} class="title">
+      <span class="num">01</span> Brand <br /> Strategy
+    </Heading>
+  </div>
+
+  <div class="right">
+    <div class="text-block">
+      <Text color="grey">
+        In the world of finance, mistakes happen—miscalculations, overlooked
+        expenses, inefficiencies that silently erode profitability. Businesses
+        lose money not because they aren’t earning, but because errors go
+        unchecked.
+      </Text>
+
+      <Text color="grey"> Redo restores confidence in financial numbers. </Text>
+    </div>
+
+    <picture>
+      <source srcset={brandMobile.src} media="(max-width: 799px)" />
+      <source srcset={brandTablet.src} media="(max-width: 1279px)" />
+      <!-- Десктоп по умолчанию -->
+      <img
+        src={brandDesktop.src}
+        alt="Redo Brand Strategy"
+        loading="lazy"
+        decoding="async"
+        class="photo"
+      />
+    </picture>
+
+    <div class="text-block">
+      <Text color="grey">
+        Born from the need for financial clarity, Redo was founded on a simple
+        yet powerful mission: to correct financial errors and optimize balance
+        sheets. We believe that precision is the key to profitability, and that
+        businesses shouldn’t be held back by avoidable losses. With advanced
+        technology and expert analysis, we uncover discrepancies, eliminate
+        inefficiencies, and restore confidence in the numbers that drive
+        success.
+      </Text>
+
+      <Text color="grey">
+        At Redo, we don’t just fix mistakes—we empower businesses to move
+        forward with accuracy and efficiency. Because when the numbers are
+        right, the future looks even brighter.
+      </Text>
+    </div>
+  </div>
+
+  <style>
+    .brand-section {
+      padding: 32px 32px 128px 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      background: var(--bg, #fff);
+      border-top: 1px solid var(--divider, #e6e6e6);
+    }
+
+    .title .num {
+      color: var(--accent-14, #f45f00);
+      font: inherit; /* размер/вес как у H1 */
+    }
+
+    .right {
+      display: grid;
+      gap: 32px;
+    }
+
+    .right .text-block {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .photo {
+      object-fit: cover;
+      display: block;
+      width: 100%;
+    }
+
+    @media (max-width: 1279px) and (min-width: 800px) {
+      .photo {
+        max-width: 352px;
+      }
+    }
+
+    @media (max-width: 799px) {
+      .brand-section {
+        grid-template-columns: 1fr;
+      }
+      .photo {
+        max-width: 335px;
+      }
+    }
+  </style>
+</section>
