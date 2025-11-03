@@ -1,0 +1,200 @@
+---
+import { Image } from "astro:assets";
+
+import Heading from "../components/Heading.astro";
+import Text from "../components/Text.astro";
+
+import personalityDesktop from "../assets/personality/personality-desktop.png";
+import personalityTablet from "../assets/personality/personality-tablet.png";
+import personalityMobile from "../assets/personality/personality-mobile.png";
+---
+
+<section class=`personality`>
+  <div class="info-block">
+    <div class="left">
+      <Heading level={1} class="title">
+        <span class="num">02</span> Personality
+      </Heading>
+    </div>
+
+    <div class="right">
+      <Text color="grey">
+        Redo’s voice brings our brand to life through the words we write and
+        speak. The way we communicate with customers has the power to transform
+        their financial well-being. Through clear and intentional language, we
+        make financial corrections simple, accessible, and stress-free. Our
+        direct, approachable, and transparent voice ensures that fixing mistakes
+        feels effortless—so our customers can move forward with confidence.
+      </Text>
+    </div>
+  </div>
+  <picture>
+    <source srcset={personalityMobile.src} media="(max-width: 799px)" />
+    <source srcset={personalityTablet.src} media="(max-width: 1279px)" />
+    <Image
+      src={personalityDesktop}
+      alt="Redo brand hero"
+      width={966}
+      height={500}
+      loading="lazy"
+      class="image"
+    />
+  </picture>
+  <div class="info-block with-extra-padding">
+    <Heading level={3}> Tone & Voice </Heading>
+    <div class="right">
+      <div class="text-block">
+        <Text variant="bold" color="black">Our Vision: why we exist</Text>
+        <Text variant="default" color="grey"
+          >To create a future where every business maximizes their potential</Text
+        >
+      </div>
+      <div class="text-block">
+        <Text variant="bold" color="black">Our Mission: what we do</Text>
+        <Text variant="default" color="grey"
+          >Correct financial errors and optimize balance sheets</Text
+        >
+      </div>
+      <div class="text-block">
+        <Text variant="bold" color="black">Our Promise: how we help</Text>
+        <Text variant="default" color="grey"
+          >Empower businesses to move forward with accuracy and efficiency</Text
+        >
+      </div>
+    </div>
+  </div>
+  <div class="sample-copy">
+    <Heading level={3}>Sample Copy</Heading>
+    <div class="columns">
+      <div class="column">
+        <Text variant="bold" color="black"
+          >Your Finances, Fixed the Right Way</Text
+        >
+        <Text variant="default" color="grey"
+          >Precision matters when it comes to financial corrections. A small
+          error can have a big impact on your savings, credit score, or future
+          financial goals.</Text
+        >
+      </div>
+      <div class="column">
+        <Text variant="bold" color="black"
+          >We Handle the Fix, You Focus on What Matters</Text
+        >
+        <Text variant="default" color="grey"
+          >Your time is valuable, and dealing with financial errors shouldn’t
+          take up more of it than necessary. Whether it’s an unexpected
+          overdraft fee or a billing mistake, we take care of the correction
+          process for you.</Text
+        >
+      </div>
+      <div class="column">
+        <Text variant="bold" color="black"
+          >Mistakes Don’t Have to Cost You—We’ve Got Your Back</Text
+        >
+        <Text variant="default" color="grey"
+          >An overlooked charge or a simple accounting mistake shouldn’t throw
+          off your financial plans. We step in to identify and correct these
+          issues before they become bigger problems.
+        </Text>
+      </div>
+      <div class="column">
+        <Text variant="bold" color="black"
+          >See an Error? We’ll Make It Right.</Text
+        >
+        <Text variant="default" color="gray"
+          >Not sure what that unexpected charge is? Worried about an incorrect
+          withdrawal? Instead of worrying or assuming the worst, let us
+          investigate and resolve the issue for you.
+        </Text>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .personality {
+    padding: 88px 32px 120px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    border-top: 1px solid var(--divider, #e6e6e6);
+    align-items: start;
+  }
+
+  .info-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .info-block.with-extra-padding {
+    padding: 32px 0;
+  }
+  .title .num {
+    color: var(--accent-14, #f45f00);
+    font: inherit; /* размер/вес как у H1 */
+  }
+
+  .image {
+    object-fit: cover;
+    display: block;
+    height: 100%;
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .sample-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    padding: 32px 0;
+    border-top: 1px solid var(--divider, #e6e6e6);
+  }
+
+  .sample-copy .columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 32px;
+  }
+
+  .sample-copy .columns .column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  @media (max-width: 1279px) and (min-width: 800px) {
+    .personality {
+      padding: 88px 32px 80px 32px;
+    }
+    .image {
+      max-width: 736px;
+    }
+  }
+
+  @media (max-width: 799px) {
+    .personality {
+      padding: 88px 20px 80px 20px;
+    }
+    .intro,
+    .info-block {
+      grid-template-columns: 1fr;
+    }
+    .image {
+      max-width: 244px;
+    }
+    .sample-copy .columns {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

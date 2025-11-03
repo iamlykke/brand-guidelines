@@ -65,7 +65,6 @@ import brandMobile from "../assets/brandStrategy/brand-mobile.png";
       grid-template-columns: 1fr 1fr;
       gap: 32px;
       background: var(--bg, #fff);
-      border-top: 1px solid var(--divider, #e6e6e6);
     }
 
     .title .num {
@@ -91,12 +90,18 @@ import brandMobile from "../assets/brandStrategy/brand-mobile.png";
     }
 
     @media (max-width: 1279px) and (min-width: 800px) {
+      .brand-section {
+        padding: 88px 20px;
+      }
       .photo {
         max-width: 352px;
       }
     }
 
     @media (max-width: 799px) {
+      .brand-section {
+        padding: 32px 20px 80px 20px;
+      }
       .brand-section {
         grid-template-columns: 1fr;
       }
