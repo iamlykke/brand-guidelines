@@ -1,0 +1,307 @@
+---
+import { Image } from "astro:assets";
+
+import Heading from "../components/Heading.astro";
+import Text from "../components/Text.astro";
+
+import primaryDesktop from "../assets/logo/primary/primary-desktop.png";
+import primaryTablet from "../assets/logo/primary/primary-tablet.png";
+import primaryMobile from "../assets/logo/primary/primary-mobile.png";
+
+import clearspaceDesktop from "../assets/logo/clearspace/clearspace-desktop.png";
+import clearspaceTablet from "../assets/logo/clearspace/clearspace-tablet.png";
+import clearspaceMobile from "../assets/logo/clearspace/clearspace-mobile.png";
+
+import secondaryDesktop from "../assets/logo/secondary/secondary-desktop.png";
+import secondaryTablet from "../assets/logo/secondary/secondary-tablet.png";
+import secondaryMobile from "../assets/logo/secondary/secondary-mobile.png";
+
+import partnershipsDesktop from "../assets/logo/partnerships/partnerships-desktop.png";
+import partnershipsTablet from "../assets/logo/partnerships/partnerships-tablet.png";
+import partnershipsMobile from "../assets/logo/partnerships/partnerships-mobile.png";
+
+import incorrect1Desktop from "../assets/logo/incorrect/1/1-desktop.png";
+import incorrect1Tablet from "../assets/logo/incorrect/1/1-tablet.png";
+import incorrect1Mobile from "../assets/logo/incorrect/1/1-mobile.png";
+
+import incorrect2Desktop from "../assets/logo/incorrect/2/2-desktop.png";
+import incorrect2Tablet from "../assets/logo/incorrect/2/2-tablet.png";
+import incorrect2Mobile from "../assets/logo/incorrect/2/2-mobile.png";
+
+import incorrect3Desktop from "../assets/logo/incorrect/3/3-desktop.png";
+import incorrect3Tablet from "../assets/logo/incorrect/3/3-tablet.png";
+import incorrect3Mobile from "../assets/logo/incorrect/3/3-mobile.png";
+
+import incorrect4Desktop from "../assets/logo/incorrect/4/4-desktop.png";
+import incorrect4Tablet from "../assets/logo/incorrect/4/4-tablet.png";
+import incorrect4Mobile from "../assets/logo/incorrect/4/4-mobile.png";
+
+import incorrect5Desktop from "../assets/logo/incorrect/5/5-desktop.png";
+import incorrect5Tablet from "../assets/logo/incorrect/5/5-tablet.png";
+import incorrect5Mobile from "../assets/logo/incorrect/5/5-mobile.png";
+
+import incorrect6Desktop from "../assets/logo/incorrect/6/6-desktop.png";
+import incorrect6Tablet from "../assets/logo/incorrect/6/6-tablet.png";
+import incorrect6Mobile from "../assets/logo/incorrect/6/6-mobile.png";
+
+import crest from "../assets/icons/crest.svg";
+
+const introTexts = [
+  "The Redo logo is a sleek, modern arrow that curves backward, symbolizing the power to rewind, correct, and optimize financial decisions. The reversed motion represents our core mission—helping businesses go back, fix errors, and recover lost value.",
+  "Designed with clean, sharp lines, the arrow conveys precision and efficiency, while its fluid motion suggests agility and adaptability in financial correction. The color palette reinforces trust and clarity—deep blues or greens for stability, complemented by bold accents to signify action and resolution.",
+  "More than just a symbol, the Redo logo embodies our commitment to turning financial missteps into opportunities for growth—because in business, every mistake deserves a second chance.",
+];
+
+const logoSections = [
+  {
+    title: "Primary Lockup",
+    desktop: primaryDesktop,
+    tablet: primaryTablet,
+    mobile: primaryMobile,
+    alt: "Redo primary logo lockup",
+    width: 966,
+    height: 500,
+  },
+  {
+    title: "Clearspace",
+    desktop: clearspaceDesktop,
+    tablet: clearspaceTablet,
+    mobile: clearspaceMobile,
+    alt: "Redo logo clearspace guidelines",
+    width: 966,
+    height: 500,
+  },
+  {
+    title: "Secondary Lockups",
+    desktop: secondaryDesktop,
+    tablet: secondaryTablet,
+    mobile: secondaryMobile,
+    alt: "Redo secondary logo lockups",
+    width: 966,
+    height: 500,
+  },
+];
+
+const incorrectUsages = [
+  {
+    desktop: incorrect1Desktop,
+    tablet: incorrect1Tablet,
+    mobile: incorrect1Mobile,
+    caption: "Do not resize the mark",
+    alt: "Incorrect logo usage - resizing",
+  },
+  {
+    desktop: incorrect2Desktop,
+    tablet: incorrect2Tablet,
+    mobile: incorrect2Mobile,
+    caption: "Do not rotate the logo",
+    alt: "Incorrect logo usage - rotation",
+  },
+  {
+    desktop: incorrect3Desktop,
+    tablet: incorrect3Tablet,
+    mobile: incorrect3Mobile,
+    caption: "Do not change the color of the mark alone",
+    alt: "Incorrect logo usage - color change",
+  },
+  {
+    desktop: incorrect4Desktop,
+    tablet: incorrect4Tablet,
+    mobile: incorrect4Mobile,
+    caption: "Do not outline the logo",
+    alt: "Incorrect logo usage - outline",
+  },
+  {
+    desktop: incorrect5Desktop,
+    tablet: incorrect5Tablet,
+    mobile: incorrect5Mobile,
+    caption: "Do not reverse the lockup",
+    alt: "Incorrect logo usage - reverse",
+  },
+  {
+    desktop: incorrect6Desktop,
+    tablet: incorrect6Tablet,
+    mobile: incorrect6Mobile,
+    caption: "Do not add gradients the logo",
+    alt: "Incorrect logo usage - gradients",
+  },
+];
+---
+
+<section class="logo-section">
+  <div class="info-block">
+    <Heading level={1} class="title">
+      <span class="num">03</span> Logo
+    </Heading>
+
+    <div class="text-block">
+      {introTexts.map((text) => <Text color="grey">{text}</Text>)}
+    </div>
+  </div>
+
+  <div class="logos-showcase">
+    {
+      logoSections.map((section) => (
+        <div class="logo-block">
+          <Heading level={3}>{section.title}</Heading>
+          <picture>
+            <source srcset={section.mobile.src} media="(max-width: 799px)" />
+            <source srcset={section.tablet.src} media="(max-width: 1279px)" />
+            <Image
+              src={section.desktop}
+              alt={section.alt}
+              width={section.width}
+              height={section.height}
+              loading="lazy"
+              class="image"
+            />
+          </picture>
+        </div>
+      ))
+    }
+
+    <div class="logo-block">
+      <Heading level={3}>Incorrect Usage</Heading>
+      <div class="logos-grid">
+        {
+          incorrectUsages.map((usage) => (
+            <div class="logo-block">
+              <picture>
+                <source srcset={usage.mobile.src} media="(max-width: 799px)" />
+                <source srcset={usage.tablet.src} media="(max-width: 1279px)" />
+                <Image
+                  src={usage.desktop}
+                  alt={usage.alt}
+                  width={311}
+                  height={161}
+                  loading="lazy"
+                  class="small-image"
+                />
+              </picture>
+              <div class="description">
+                <Image
+                  src={crest}
+                  alt={"crest icon"}
+                  width={16}
+                  height={16}
+                  loading="lazy"
+                />
+                <Text variant="caption-small">{usage.caption}</Text>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="logo-block">
+      <Heading level={3}>Partnerships</Heading>
+      <picture>
+        <source srcset={partnershipsMobile.src} media="(max-width: 799px)" />
+        <source srcset={partnershipsTablet.src} media="(max-width: 1279px)" />
+        <Image
+          src={partnershipsDesktop}
+          alt="Redo logo partnerships usage"
+          width={966}
+          height={500}
+          loading="lazy"
+          class="image"
+        />
+      </picture>
+    </div>
+  </div>
+</section>
+
+<style>
+  .logo-section {
+    padding: 32px 32px 120px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    border-top: 1px solid var(--divider, #e6e6e6);
+    align-items: start;
+  }
+
+  .info-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 30px;
+  }
+
+  .text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .title .num {
+    color: var(--accent-14, #f45f00);
+    font: inherit;
+  }
+
+  .logos-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+
+  .logo-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .logo-block .description {
+    display: inline-flex;
+    gap: 5px;
+  }
+  .image,
+  .small-image {
+    object-fit: cover;
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+
+  .logos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+    row-gap: 30px;
+    column-gap: 16px;
+    width: 100%;
+  }
+
+  .logos-grid .logo-block {
+    min-width: 0;
+  }
+
+  @media (max-width: 1279px) and (min-width: 800px) {
+    .logo-section {
+      padding: 88px 32px 80px 32px;
+    }
+    .image {
+      max-width: 736px;
+    }
+  }
+
+  @media (max-width: 799px) {
+    .logo-section {
+      padding: 88px 20px 80px 20px;
+    }
+    .info-block {
+      grid-template-columns: 1fr;
+    }
+    .small-image {
+      max-width: 100%;
+    }
+    .image {
+      max-width: 335px;
+    }
+    .logos-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

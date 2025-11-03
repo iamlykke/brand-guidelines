@@ -1,6 +1,6 @@
 ---
 interface TextProps {
-  variant?: "default" | "bold" | "link";
+  variant?: "default" | "bold" | "link" | "caption-small";
   color?: "black" | "grey";
   class?: string;
   [attr: string]: any;
@@ -21,6 +21,10 @@ const colorClass = `text--${color}`;
     <a class={`text text-link ${colorClass} ${className}`} {...attrs}>
       <slot />
     </a>
+  ) : variant === "caption-small" ? (
+    <p class={`text text-caption ${colorClass} ${className}`} {...attrs}>
+      <slot />
+    </p>
   ) : (
     <p
       class={`text ${
@@ -82,5 +86,12 @@ const colorClass = `text--${color}`;
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
     cursor: pointer;
+  }
+
+  .text-caption {
+    font-weight: var(--caption-small-weight, 700);
+    font-size: var(--caption-small-size, 15px);
+    line-height: var(--caption-small-line-height, 120%);
+    letter-spacing: var(--caption-small-letter-spacing, -0.01em);
   }
 </style>

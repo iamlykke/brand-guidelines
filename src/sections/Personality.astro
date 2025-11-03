@@ -7,6 +7,40 @@ import Text from "../components/Text.astro";
 import personalityDesktop from "../assets/personality/personality-desktop.png";
 import personalityTablet from "../assets/personality/personality-tablet.png";
 import personalityMobile from "../assets/personality/personality-mobile.png";
+
+const toneVoiceItems = [
+  {
+    title: "Our Vision: why we exist",
+    text: "To create a future where every business maximizes their potential",
+  },
+  {
+    title: "Our Mission: what we do",
+    text: "Correct financial errors and optimize balance sheets",
+  },
+  {
+    title: "Our Promise: how we help",
+    text: "Empower businesses to move forward with accuracy and efficiency",
+  },
+];
+
+const sampleCopyItems = [
+  {
+    title: "Your Finances, Fixed the Right Way",
+    text: "Precision matters when it comes to financial corrections. A small error can have a big impact on your savings, credit score, or future financial goals.",
+  },
+  {
+    title: "We Handle the Fix, You Focus on What Matters",
+    text: "Your time is valuable, and dealing with financial errors shouldn't take up more of it than necessary. Whether it's an unexpected overdraft fee or a billing mistake, we take care of the correction process for you.",
+  },
+  {
+    title: "Mistakes Don't Have to Cost You—We've Got Your Back",
+    text: "An overlooked charge or a simple accounting mistake shouldn't throw off your financial plans. We step in to identify and correct these issues before they become bigger problems.",
+  },
+  {
+    title: "See an Error? We'll Make It Right.",
+    text: "Not sure what that unexpected charge is? Worried about an incorrect withdrawal? Instead of worrying or assuming the worst, let us investigate and resolve the issue for you.",
+  },
+];
 ---
 
 <section class=`personality`>
@@ -41,72 +75,37 @@ import personalityMobile from "../assets/personality/personality-mobile.png";
     />
   </picture>
   <div class="info-block with-extra-padding">
-    <Heading level={3}> Tone & Voice </Heading>
+    <Heading level={3}>Tone & Voice</Heading>
     <div class="right">
-      <div class="text-block">
-        <Text variant="bold" color="black">Our Vision: why we exist</Text>
-        <Text variant="default" color="grey"
-          >To create a future where every business maximizes their potential</Text
-        >
-      </div>
-      <div class="text-block">
-        <Text variant="bold" color="black">Our Mission: what we do</Text>
-        <Text variant="default" color="grey"
-          >Correct financial errors and optimize balance sheets</Text
-        >
-      </div>
-      <div class="text-block">
-        <Text variant="bold" color="black">Our Promise: how we help</Text>
-        <Text variant="default" color="grey"
-          >Empower businesses to move forward with accuracy and efficiency</Text
-        >
-      </div>
+      {
+        toneVoiceItems.map((item) => (
+          <div class="text-block">
+            <Text variant="bold" color="black">
+              {item.title}
+            </Text>
+            <Text variant="default" color="grey">
+              {item.text}
+            </Text>
+          </div>
+        ))
+      }
     </div>
   </div>
   <div class="sample-copy">
     <Heading level={3}>Sample Copy</Heading>
     <div class="columns">
-      <div class="column">
-        <Text variant="bold" color="black"
-          >Your Finances, Fixed the Right Way</Text
-        >
-        <Text variant="default" color="grey"
-          >Precision matters when it comes to financial corrections. A small
-          error can have a big impact on your savings, credit score, or future
-          financial goals.</Text
-        >
-      </div>
-      <div class="column">
-        <Text variant="bold" color="black"
-          >We Handle the Fix, You Focus on What Matters</Text
-        >
-        <Text variant="default" color="grey"
-          >Your time is valuable, and dealing with financial errors shouldn’t
-          take up more of it than necessary. Whether it’s an unexpected
-          overdraft fee or a billing mistake, we take care of the correction
-          process for you.</Text
-        >
-      </div>
-      <div class="column">
-        <Text variant="bold" color="black"
-          >Mistakes Don’t Have to Cost You—We’ve Got Your Back</Text
-        >
-        <Text variant="default" color="grey"
-          >An overlooked charge or a simple accounting mistake shouldn’t throw
-          off your financial plans. We step in to identify and correct these
-          issues before they become bigger problems.
-        </Text>
-      </div>
-      <div class="column">
-        <Text variant="bold" color="black"
-          >See an Error? We’ll Make It Right.</Text
-        >
-        <Text variant="default" color="gray"
-          >Not sure what that unexpected charge is? Worried about an incorrect
-          withdrawal? Instead of worrying or assuming the worst, let us
-          investigate and resolve the issue for you.
-        </Text>
-      </div>
+      {
+        sampleCopyItems.map((item) => (
+          <div class="column">
+            <Text variant="bold" color="black">
+              {item.title}
+            </Text>
+            <Text variant="default" color="grey">
+              {item.text}
+            </Text>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
