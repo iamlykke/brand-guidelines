@@ -1,0 +1,89 @@
+---
+import Text from "./Text.astro";
+
+interface Props {
+  name: string;
+  hex: string;
+  cssClass: string;
+}
+
+const { name, hex, cssClass } = Astro.props;
+---
+
+<div class="color-container">
+  <div class={`color ${cssClass}`}></div>
+  <div class="text">
+    <Text variant="caption-small">{name}</Text>
+    <Text variant="caption-small">Hex: {hex}</Text>
+  </div>
+</div>
+
+<style>
+  .color-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .color {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  /* Primary colors */
+  .color.orange {
+    background-color: var(--accent-14, #fa9819);
+  }
+
+  .color.blue-tint {
+    background-color: var(--accent-10, #b6c9cf);
+  }
+
+  .color.white {
+    background-color: var(--accent-15, #ffffff);
+    border: 1px solid black;
+  }
+
+  .color.baby-blue {
+    background-color: var(--accent-11, #c6ebf7);
+  }
+
+  /* Secondary colors */
+  .color.navy {
+    background-color: var(--accent-5, #1e3d59);
+  }
+
+  .color.caption {
+    background-color: var(--accent-6, #48749e);
+  }
+
+  .color.sky-blue {
+    background-color: var(--accent-7, #deeefe);
+  }
+
+  .color.off-blue {
+    background-color: var(--accent-8, #e8ebef);
+  }
+
+  .color.deep-orange {
+    background-color: var(--accent-2, #cd4900);
+  }
+
+  .color.black {
+    background-color: var(--accent-4, #040404);
+  }
+
+  .color.dark-grey {
+    background-color: var(--accent-9, #a3a3a3);
+  }
+
+  .color.grey {
+    background-color: var(--accent-12, #f5f5e5);
+  }
+</style>

@@ -1,0 +1,49 @@
+---
+import Heading from "./Heading.astro";
+import ColorSwatch from "./ColorSwatch.astro";
+import type { Color } from "../data/colorData";
+
+interface Props {
+  title: string;
+  colors: Color[];
+}
+
+const { title, colors } = Astro.props;
+---
+
+<div class="palette">
+  <Heading level={3}>{title}</Heading>
+  <div class="showcase">
+    {
+      colors.map((color) => (
+        <ColorSwatch
+          name={color.name}
+          hex={color.hex}
+          cssClass={color.cssClass}
+        />
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .palette {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .showcase {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 20px;
+    column-gap: 16px;
+  }
+
+  @media (max-width: 799px) {
+    .showcase {
+      grid-template-columns: 1fr;
+      row-gap: 40px;
+    }
+  }
+</style>

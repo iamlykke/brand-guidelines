@@ -1,0 +1,73 @@
+---
+import Heading from "../components/Heading.astro";
+import Text from "../components/Text.astro";
+import ColorPalette from "../components/ColorPalette.astro";
+import { primaryColors, secondaryColors } from "../data/colorData";
+---
+
+<section class="color-section">
+  <div class="info-block">
+    <Heading level={1} class="title">
+      <span class="num">04</span> Color
+    </Heading>
+
+    <div class="text-block">
+      <Text color="grey">
+        Redo's color palette is designed to evoke trust, reliability, and
+        financial clarity, ensuring that every touchpoint reflects our
+        commitment to accuracy and efficiency.
+      </Text>
+      <Text color="grey">
+        Together, these colors create a strong, dependable, and forward-thinking
+        brand identity, ensuring that Redo is instantly recognized as the go-to
+        solution for financial corrections and optimization.
+      </Text>
+    </div>
+  </div>
+
+  <div class="color-palette">
+    <ColorPalette title="Primary Palette" colors={primaryColors} />
+    <ColorPalette title="Secondary Palette" colors={secondaryColors} />
+  </div>
+</section>
+
+<style>
+  .color-section {
+    padding: 32px 32px 120px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    border-top: 1px solid var(--divider, #e6e6e6);
+  }
+
+  .info-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 30px;
+  }
+
+  .text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .title .num {
+    color: var(--accent-2, #f45f00);
+    font: inherit;
+  }
+
+  .color-palette {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    padding-top: 40px;
+  }
+
+  @media (max-width: 799px) {
+    .info-block {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
