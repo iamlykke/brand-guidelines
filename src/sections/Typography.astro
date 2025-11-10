@@ -1,0 +1,130 @@
+---
+import { Image } from "astro:assets";
+
+import Heading from "../components/Heading.astro";
+import Text from "../components/Text.astro";
+
+import typographyDesktop from "../assets/typography/typography-desktop.png";
+import typographyTablet from "../assets/typography/typography-tablet.png";
+import typographyMobile from "../assets/typography/typography-mobile.png";
+---
+
+<section class=`typography-section`>
+  <div class="info-block">
+    <Heading level={1} class="title">
+      <span class="num">05</span> Typography
+    </Heading>
+
+    <div class="right">
+      <div class="text-block">
+        <Text color="grey">
+          Redo’s typography balances clarity and professionalism with a modern
+          yet timeless type pairing, reinforcing our commitment to accuracy,
+          efficiency, and financial stability.
+        </Text>
+      </div>
+
+      <picture>
+        <source srcset={typographyDesktop.src} media="(max-width: 799px)" />
+        <source srcset={typographyTablet.src} media="(max-width: 1279px)" />
+        <!-- Десктоп по умолчанию -->
+        <Image
+          src={typographyDesktop}
+          alt={"Redo Typography"}
+          width={467}
+          height={300}
+          loading="lazy"
+          class="image"
+        />
+      </picture>
+      <div class="text-block">
+        <Text color="grey">
+          Primary Sans-Serif <span class="text-orange">(Rethink Sans Reg)</span>
+          is a clean, modern sans-serif typeface that ensures legibility and precision
+          across all digital and print materials. Its geometric structure reflects
+          clarity, efficiency, and trust, making it the ideal choice for data-heavy
+          content, dashboards, and user interfaces.
+        </Text>
+
+        <Text color="grey">
+          Secondary Serif <span class="text-orange">(Hedvig Letters Serif)</span
+          > is a refined, authoritative serif font that adds a touch of tradition
+          and credibility. Used for emphasis in headlines, reports, and financial
+          documents, it reinforces Redo’s expertise and reliability in correcting
+          financial discrepancies.
+        </Text>
+
+        <Text color="grey">
+          This sans-serif and serif combination creates a dynamic
+          contrast—modern yet trustworthy, analytical yet approachable, ensuring
+          Redo’s brand communication is always clear, professional, and
+          dependable.
+        </Text>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .typography-section {
+      padding: 32px 32px 128px 32px;
+
+      gap: 30px;
+    }
+
+    .info-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding-bottom: 40px;
+    }
+
+    .title .num {
+      color: var(--accent-2, #f45f00);
+      font: inherit; /* размер/вес как у H1 */
+    }
+
+    .text-orange {
+      color: var(--accent-2, #f45f00);
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .right .text-block {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .photo {
+      object-fit: cover;
+      display: block;
+      width: 100%;
+    }
+
+    @media (max-width: 1279px) and (min-width: 800px) {
+      .typography-section {
+        padding: 88px 20px;
+      }
+      .image {
+        object-fit: cover;
+        max-width: 352px;
+      }
+    }
+
+    @media (max-width: 799px) {
+      .typography-section {
+        padding: 32px 20px 80px 20px;
+      }
+      .info-block {
+        grid-template-columns: 1fr;
+      }
+      .image {
+        object-fit: cover;
+        max-width: 335px;
+      }
+    }
+  </style>
+</section>
