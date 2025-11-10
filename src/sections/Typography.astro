@@ -25,7 +25,7 @@ import typographyMobile from "../assets/typography/typography-mobile.png";
       </div>
 
       <picture>
-        <source srcset={typographyDesktop.src} media="(max-width: 799px)" />
+        <source srcset={typographyMobile.src} media="(max-width: 799px)" />
         <source srcset={typographyTablet.src} media="(max-width: 1279px)" />
         <!-- Десктоп по умолчанию -->
         <Image
@@ -64,8 +64,35 @@ import typographyMobile from "../assets/typography/typography-mobile.png";
     </div>
   </div>
 
+  <div class=""></div>
+  <div class="type-styles">
+    <div class="typefaces">
+      <div class="typeface">
+        <Text variant="default">Primary Typeface</Text>
+        <div class="typeface-primary">Rethink Sans Reg</div>
+      </div>
+      <div class="typeface">
+        <Text variant="default">Secondary Typeface</Text>
+        <div class="typeface-secondary">Hedvig Letters Serif</div>
+      </div>
+    </div>
+    <div class="sizing">
+      <div class="header">
+        <Heading level={3} class="title"> Sizing </Heading>
+        <Text color="grey"
+          >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </Text>
+      </div>
+    </div>
+  </div>
+
   <style>
     .typography-section {
+      display: flex;
+      flex-direction: column;
       border-top: 1px solid var(--divider, #e6e6e6);
       padding: 32px 32px 128px 32px;
 
@@ -103,6 +130,53 @@ import typographyMobile from "../assets/typography/typography-mobile.png";
       object-fit: cover;
       display: block;
       width: 100%;
+    }
+
+    .type-styles {
+      display: flex;
+      flex-direction: column;
+      gap: 100px;
+      padding: 0 32px;
+    }
+
+    .typefaces {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .typeface {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .typeface-primary {
+      font-weight: 400;
+      font-size: 60px;
+      letter-spacing: -0.02em;
+      line-height: 130%;
+    }
+
+    .typeface-secondary {
+      font-family: "Hedvig Letters Serif", arial;
+      font-weight: 400;
+      font-size: 60px;
+      letter-spacing: -0.02em;
+      line-height: 130%;
+    }
+
+    .sizing {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      padding: 32px 0 40px;
+      border-top: 1px solid var(--divider, #e6e6e6);
     }
 
     @media (max-width: 1279px) and (min-width: 800px) {
