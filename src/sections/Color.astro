@@ -1,8 +1,64 @@
 ---
+import { Image } from "astro:assets";
 import Heading from "../components/Heading.astro";
 import Text from "../components/Text.astro";
 import ColorPalette from "../components/ColorPalette.astro";
 import { primaryColors, secondaryColors } from "../data/colorData";
+
+import gradient1Desktop from "../assets/color/gradient-1/gradient-1-desktop.png";
+import gradient1Tablet from "../assets/color/gradient-1/gradient-1-tablet.png";
+import gradient1Mobile from "../assets/color/gradient-1/gradient-1-mobile.png";
+
+import gradient2Desktop from "../assets/color/gradient-2/gradient-2-desktop.png";
+import gradient2Tablet from "../assets/color/gradient-2/gradient-2-tablet.png";
+import gradient2Mobile from "../assets/color/gradient-2/gradient-2-mobile.png";
+
+import gradient3Desktop from "../assets/color/gradient-3/gradient-3-desktop.png";
+import gradient3Tablet from "../assets/color/gradient-3/gradient-3-tablet.png";
+import gradient3Mobile from "../assets/color/gradient-3/gradient-3-mobile.png";
+
+import gradient4Desktop from "../assets/color/gradient-4/gradient-4-desktop.png";
+import gradient4Tablet from "../assets/color/gradient-4/gradient-4-tablet.png";
+import gradient4Mobile from "../assets/color/gradient-4/gradient-4-mobile.png";
+
+const gradients = [
+  {
+    title: "Gradient 1",
+    desktop: gradient1Desktop,
+    tablet: gradient1Tablet,
+    mobile: gradient1Mobile,
+    alt: "Gradient 1",
+    width: 435,
+    height: 292,
+  },
+  {
+    title: "Gradient 2",
+    desktop: gradient2Desktop,
+    tablet: gradient2Tablet,
+    mobile: gradient2Mobile,
+    alt: "Gradient 2",
+    width: 435,
+    height: 292,
+  },
+  {
+    title: "Gradient 3",
+    desktop: gradient3Desktop,
+    tablet: gradient3Tablet,
+    mobile: gradient3Mobile,
+    alt: "Gradient 3",
+    width: 435,
+    height: 292,
+  },
+  {
+    title: "Gradient 4",
+    desktop: gradient4Desktop,
+    tablet: gradient4Tablet,
+    mobile: gradient4Mobile,
+    alt: "Gradient 4",
+    width: 435,
+    height: 292,
+  },
+];
 ---
 
 <section class="color-section">
@@ -28,6 +84,39 @@ import { primaryColors, secondaryColors } from "../data/colorData";
   <div class="color-palette">
     <ColorPalette title="Primary Palette" colors={primaryColors} />
     <ColorPalette title="Secondary Palette" colors={secondaryColors} />
+  </div>
+
+  <div class="gradient-palette">
+    <Heading level={3}>Gradient Palette</Heading>
+    <div class="showcase">
+      {
+        gradients.map((gradient) => {
+          return (
+            <div class="gradient">
+              <picture>
+                <source
+                  srcset={gradient.mobile.src}
+                  media="(max-width: 799px)"
+                />
+                <source
+                  srcset={gradient.tablet.src}
+                  media="(max-width: 1279px)"
+                />
+                <Image
+                  src={gradient.desktop}
+                  alt={gradient.alt}
+                  width={gradient.width}
+                  height={gradient.height}
+                  loading="lazy"
+                  class="image"
+                />
+              </picture>
+              <Text variant="caption-small">{gradient.title}</Text>
+            </div>
+          );
+        })
+      }
+    </div>
   </div>
 </section>
 
@@ -65,9 +154,50 @@ import { primaryColors, secondaryColors } from "../data/colorData";
     padding-top: 40px;
   }
 
+  .gradient-palette {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 32px;
+    row-gap: 20px;
+  }
+
+  .gradient {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  @media (max-width: 1279px) and (min-width: 800px) {
+    .image {
+      object-fit: cover;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+    }
+  }
+
   @media (max-width: 799px) {
+    .image {
+      object-fit: cover;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+    }
     .info-block {
       grid-template-columns: 1fr;
+    }
+
+    .showcase {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
     }
   }
 </style>
